@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'Account',
+};
+
 type Props = {};
 function Account({}: Props) {
   return <div>Account</div>;
