@@ -1,5 +1,9 @@
 import ReservationCard from "@/app/_components/ReservationCard";
 
+export const metadata = {
+  title: "Reservations",
+};
+
 type Props = {};
 function Reservations({}: Props) {
   const bookings = [];
