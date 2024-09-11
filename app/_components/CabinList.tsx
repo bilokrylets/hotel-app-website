@@ -1,8 +1,6 @@
-import { Suspense } from "react";
 import { getCabins } from "../_lib/data-service";
 import { Cabin } from "../_types/cabin";
 import CabinCard from "./CabinCard";
-import Loading from "../cabins/loading";
 
 const CabinList = async () => {
   const cabins: Cabin[] = await getCabins();
