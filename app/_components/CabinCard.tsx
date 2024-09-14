@@ -8,7 +8,7 @@ function CabinCard({ cabin }: { cabin: Cabin }) {
 
   return (
     <div className="flex border border-primary-800">
-      <div className="relative flex-1">
+      <div className="relative z-0 flex-1">
         <Image
           src={image}
           fill

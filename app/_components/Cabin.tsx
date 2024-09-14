@@ -9,7 +9,6 @@ function Cabin({ cabin }: Props) {
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
 
-  console.log(cabin);
   return (
     <div className="mb-24 grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 px-10 py-3">
       <div className="relative -translate-x-3 scale-[1.15]">
