@@ -38,3 +38,5 @@ next-env.d.ts
 # other
 starter
 .env.local
+
+#api
