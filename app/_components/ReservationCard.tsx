@@ -3,22 +3,26 @@ import { format, formatDistance, isPast, isToday, parseISO } from "date-fns";
 import DeleteReservation from "./DeleteReservation";
 import Image from "next/image";
 import Link from "next/link";
+import { Booking } from "../_types/booking";
 
 export const formatDistanceFromNow = (dateStr) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
   }).replace("about ", "");
 
-function ReservationCard({ booking }) {
+type Props = {
+  booking: Booking;
+  onDelete: () => void;
+};
+
+function ReservationCard({ booking, onDelete }: Props) {
   const {
     id,
-    guestId,
     startDate,
     endDate,
     numNights,
     totalPrice,
     numGuests,
-    status,
     created_at,
     cabins: { name, image },
   } = booking;
@@ -84,7 +88,7 @@ function ReservationCard({ booking }) {
         ) : (
           <></>
         )}
-        <DeleteReservation bookingId={id} />
+        <DeleteReservation onDelete={onDelete} bookingId={id} />
       </div>
     </div>
   );
