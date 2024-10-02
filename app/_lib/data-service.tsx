@@ -1,6 +1,8 @@
 import { eachDayOfInterval } from "date-fns";
 import { supabase } from "./supabase";
 import { notFound } from "next/navigation";
+import { Guest } from "../_types/guest";
+import { Booking } from "../_types/booking";
 
 export async function getCabin(id: number) {
   const { data, error } = await supabase
@@ -90,7 +92,7 @@ export async function getBookings(guestId: number) {
 }
 
 export async function getBookedDatesByCabinId(cabinId: number) {
-  let today = new Date();
+  let today: string | Date = new Date();
   today.setUTCHours(0, 0, 0, 0);
   today = today.toISOString();
 
@@ -145,7 +147,7 @@ export async function getCountries() {
 /////////////
 // CREATE
 
-export async function createGuest(newGuest) {
+export async function createGuest(newGuest: Guest) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {
@@ -156,7 +158,7 @@ export async function createGuest(newGuest) {
   return data;
 }
 
-export async function createBooking(newBooking) {
+export async function createBooking(newBooking: Booking) {
   const { data, error } = await supabase
     .from("bookings")
     .insert([newBooking])

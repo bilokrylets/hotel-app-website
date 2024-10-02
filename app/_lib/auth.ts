@@ -13,7 +13,14 @@ const authConfig = {
     authorized({ auth, request }) {
       return !!auth?.user;
     },
-    async signIn({ user }) {
+    async signIn({
+      user,
+    }: {
+      user: {
+        email: string;
+        name: string;
+      };
+    }) {
       try {
         const existingGuest = await getGuest(user.email);
 

@@ -2,8 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type Props = {};
-function Filter({}: Props) {
+function Filter() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
