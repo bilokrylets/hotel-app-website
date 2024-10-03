@@ -29,12 +29,19 @@ export async function createReservation(bookingData, formData) {
   redirect("/cabins/thankyou");
 }
 
-export async function updateProfile(formData: {}) {
+type UpdateProfileProps = {
+  fullName: string;
+  email: string;
+  countryFlag: string;
+  nationalId: string;
+};
+
+export async function updateProfile(formData: FormData<UpdateProfileProps>) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
   const nationalID = formData.get("nationalID");
-  const [nationality, countryFlag] = formData.get("nationality").split("%");
+  const [nationality, countryFlag] = formData?.get("nationality")?.split("%");
 
   if (!/^\d{6,12}$/.test(nationalID))
     throw new Error("Provide a valid national ID");
